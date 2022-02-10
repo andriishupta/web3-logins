@@ -1,9 +1,15 @@
+import ConnectButton from '../ConnectButton';
+import { useLogin } from '../../core';
+
 const Plain = () => {
+  // %REMOVE_META_CODE
+  const {} = useLogin();
+  // %REMOVE_META_CODE
   return (
     <>
-      Plain
+      {/*<ConnectButton/>*/}
     </>
-  )
-}
+  );
+};
 
 export default Plain;

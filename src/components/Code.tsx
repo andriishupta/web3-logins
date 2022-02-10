@@ -3,33 +3,48 @@ import {
   useEffect,
   useState
 } from 'react';
-import Image from 'next/image';
+import {
+  Box,
+  Button
+} from '@chakra-ui/react';
+
+import copy from 'copy-to-clipboard';
 
 // @ts-ignore: ignore missing typings
 import SyntaxHighlighter from 'react-syntax-highlighter';
 // @ts-ignore: ignore missing typings
 import nightOwl from 'react-syntax-highlighter/dist/esm/styles/hljs/night-owl';
 
-import {
-  LoginType,
-  useLogin
-} from '../core';
-import { Box } from '@chakra-ui/react';
+import { useLogin } from '../core';
 
 const Code: FC = () => {
-  const { currentLogin } = useLogin();
+  const { type } = useLogin();
   const [codeString, setCodeString] = useState('');
 
   useEffect(() => {
-    if (currentLogin !== LoginType.Mock) {
-      fetch(`/public/${currentLogin}.login.json`).then((response) => response.json()).then(({ value }) => setCodeString(value));
-    }
-  }, [currentLogin]);
+    fetch(`/${type}.login.json`).then((response) => response.json()).then(({ value }) => setCodeString(value));
+  }, [type]);
 
-  return <Box my={2}>
-    {currentLogin !== LoginType.Mock
-      ? codeString ? <SyntaxHighlighter language="typescript" style={nightOwl} showLineNumbers={true}>{codeString}</SyntaxHighlighter> : ''
-      : <Image src="/mock.png" alt="coding web3 login meme" width={640} height={363}/>
+  return <Box my={2} width={'100%'}>
+    {codeString &&
+      <>
+        <Button
+          position={'absolute'}
+          rounded={0}
+          right={0}
+          onClick={() => copy(codeString)}
+        >
+          Copy 📄`
+        </Button>
+        <SyntaxHighlighter
+          language="typescript"
+          style={nightOwl}
+          showLineNumbers={true}
+          wrapLongLines={true}
+        >
+          {codeString}
+        </SyntaxHighlighter>
+      </>
     }
   </Box>;
 };

@@ -4,87 +4,61 @@ import {
   useContext,
   useState
 } from 'react';
+import { ThemeTypings } from '@chakra-ui/styled-system';
 
 export enum LoginType {
   Mock = 'Mock',
   Plain = 'Plain',
-  Web3Modal = 'web3Modal',
+  Web3Modal = 'Web3Modal',
   ThirdWeb = 'ThirdWeb',
   Moralis = 'Moralis',
 }
 
-export const AvailableLoginTypes = [
-  LoginType.Mock,
-  LoginType.Plain,
-  LoginType.Web3Modal,
-  LoginType.ThirdWeb,
-  LoginType.Moralis,
-];
-
-export const LoginLogo = {
-  [ LoginType.Mock ]: '',
-  [ LoginType.Plain ]: '',
-  [ LoginType.Web3Modal ]: '',
-  [ LoginType.ThirdWeb ]: '',
-  [ LoginType.Moralis ]: '',
+export const AvailableLoginTypesMap: Record<LoginType, { type: LoginType, color: ThemeTypings["colorSchemes"] }> = {
+  [LoginType.Mock]: {
+    type: LoginType.Mock,
+    color: 'gray',
+  },
+  [LoginType.Plain]: {
+    type: LoginType.Plain,
+    color: 'blackAlpha',
+  },
+  [LoginType.Web3Modal]: {
+    type: LoginType.Web3Modal,
+    color: 'teal',
+  },
+  [LoginType.ThirdWeb]: {
+    type: LoginType.ThirdWeb,
+    color: 'purple',
+  },
+  [LoginType.Moralis]: {
+    type: LoginType.Moralis,
+    color: 'facebook',
+  },
 };
 
+export const AvailableLoginTypes = Object.values(AvailableLoginTypesMap);
+
 export type LoginState = {
-  currentLogin: LoginType,
-  setLogin: Function,
-  isConnected: boolean
-  connect: Function,
-  disconnect: Function,
+  type: LoginType,
+  setLoginType: (type: LoginType) => void,
 }
 
 export const defaultLoginStateValue: LoginState = {
-  currentLogin: LoginType.Mock,
-  setLogin: () => () => {},
-  isConnected: false,
-  // for initial value only providing setter of setIsConnected
-  // and "closuring" function calls
-  connect: (setIsConnect: any) => () => () => {
-    alert('hooray! this is mocked login and you are "connected"');
-    setIsConnect(true);
-  },
-  disconnect: (setIsConnect: any) => () => () => {
-    alert('bye! you are disconnected!');
-    setIsConnect(false);
-  },
+  type: LoginType.Mock,
+  setLoginType: () => {},
 };
 
 export const LoginContext = createContext<LoginState>(defaultLoginStateValue);
 
 export const LoginProvider: FC = ({ children }) => {
-  const [currentLogin, setCurrentLogin] = useState(defaultLoginStateValue.currentLogin);
-  const [isConnected, setIsConnected] = useState(defaultLoginStateValue.isConnected);
-  const [connect, setConnect] = useState(defaultLoginStateValue.connect(setIsConnected));
-  const [disconnect, setDisconnect] = useState(defaultLoginStateValue.disconnect(setIsConnected));
-
-  const setLogin = ({ type, connectFn, disconnectFn }: { type: LoginType, connectFn: Function, disconnectFn: Function }) => {
-    if (isConnected) {
-      disconnect();
-    }
-    setCurrentLogin(type);
-    setConnect(() => {
-      console.log('[setConnect]');
-      connectFn();
-      setIsConnected(true);
-    });
-    setDisconnect(() => {
-      console.log('[setDisconnect]');
-      disconnectFn();
-      setIsConnected(false);
-    });
-  };
+  const [type, setType] = useState(defaultLoginStateValue.type);
+  const setLoginType = setType;
 
   return <>
     <LoginContext.Provider value={{
-      currentLogin,
-      setLogin,
-      isConnected,
-      connect,
-      disconnect,
+      type,
+      setLoginType,
     }}>
       {children}
     </LoginContext.Provider>

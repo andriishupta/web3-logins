@@ -1,7 +1,7 @@
 const ThirdWeb = () => {
   return (
     <>
-      Plain
+      ThirdWeb
     </>
   )
 }

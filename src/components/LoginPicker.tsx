@@ -1,20 +1,32 @@
 import {
-  Tag,
-  TagLabel,
-  TagRightIcon
-} from '@chakra-ui/tag';
+  Box,
+  Button
+} from '@chakra-ui/react';
 
-import { Box } from '@chakra-ui/react';
-
-import { AvailableLoginTypes } from '../core';
+import {
+  AvailableLoginTypes,
+  useLogin
+} from '../core';
 
 const LoginPicker = () => {
+  const { setLoginType } = useLogin();
   return <Box>
-    {AvailableLoginTypes.map((availableLoginType) =>
-      <Tag size={'lg'} marginX={2} key={availableLoginType} variant="outline" colorScheme="green">
-        <TagLabel>{availableLoginType}</TagLabel>
-        <TagRightIcon>+</TagRightIcon>
-      </Tag>
+    {AvailableLoginTypes.map(({ type, color }) =>
+      <Button
+        size={'lg'}
+        margin={2}
+        key={type}
+        rounded={'full'}
+        cursor={'pointer'}
+        colorScheme={color}
+        bg={`${color}.400`}
+        _hover={{
+          bg: `${color}.500`,
+        }}
+        onClick={() => setLoginType(type)}
+      >
+        {type}
+      </Button>
     )}
   </Box>;
 };

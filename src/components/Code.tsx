@@ -18,12 +18,12 @@ import nightOwl from 'react-syntax-highlighter/dist/esm/styles/hljs/night-owl';
 import { useLogin } from '../core';
 
 const Code: FC = () => {
-  const { type } = useLogin();
+  const { loginType } = useLogin();
   const [codeString, setCodeString] = useState('');
 
   useEffect(() => {
-    fetch(`/${type}.login.json`).then((response) => response.json()).then(({ value }) => setCodeString(value));
-  }, [type]);
+    fetch(`/${loginType}.login.json`).then((response) => response.json()).then(({ value }) => setCodeString(value));
+  }, [loginType]);
 
   return <Box my={2} width={'100%'}>
     {codeString &&

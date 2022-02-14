@@ -40,24 +40,23 @@ export const AvailableLoginTypesMap: Record<LoginType, { type: LoginType, color:
 export const AvailableLoginTypes = Object.values(AvailableLoginTypesMap);
 
 export type LoginState = {
-  type: LoginType,
+  loginType: LoginType | undefined,
   setLoginType: (type: LoginType) => void,
 }
 
 export const defaultLoginStateValue: LoginState = {
-  type: LoginType.Mock,
+  loginType: undefined,
   setLoginType: () => {},
 };
 
 export const LoginContext = createContext<LoginState>(defaultLoginStateValue);
 
 export const LoginProvider: FC = ({ children }) => {
-  const [type, setType] = useState(defaultLoginStateValue.type);
-  const setLoginType = setType;
+  const [loginType, setLoginType] = useState(defaultLoginStateValue.loginType);
 
   return <>
     <LoginContext.Provider value={{
-      type,
+      loginType,
       setLoginType,
     }}>
       {children}

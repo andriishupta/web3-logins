@@ -1,4 +1,5 @@
 import type { NextPage } from 'next';
+import Image from 'next/image';
 import {
   Box,
   Container,
@@ -27,14 +28,14 @@ import Moralis from '../src/components/logins/Moralis';
 import Mock from '../src/components/logins/Mock';
 
 const Home: NextPage = () => {
-  const { type } = useLogin();
+  const { loginType } = useLogin();
   const LoginComponent = {
     [ LoginType.Mock ]: Mock,
     [ LoginType.Plain ]: Plain,
     [ LoginType.Web3Modal ]: Web3Modal,
     [ LoginType.ThirdWeb ]: ThirdWeb,
     [ LoginType.Moralis ]: Moralis,
-  }[ type ];
+  }[ loginType! ];
 
   return (
     <>
@@ -43,7 +44,7 @@ const Home: NextPage = () => {
           href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap"
           rel="stylesheet"
         />
-        <title>Web3 Login Showcase | {type} </title>
+        <title>Web3 Logins Showcase {loginType ? `| ${loginType}` : ''} </title>
       </Head>
       <Container position={'relative'} maxW={'3xl'} display={'flex'} flexDirection={'column'}>
         <Stack
@@ -55,8 +56,14 @@ const Home: NextPage = () => {
         >
           <LoginPicker/>
           <Heading/>
-          <LoginComponent/>
-          <DynamicCodeComponent/>
+          {loginType
+            ? <>
+              <LoginComponent/>
+              <DynamicCodeComponent/>
+              ...Description...
+            </>
+            : <Box py={{ base: 10, md: 10 }}><Image src="/placeholder.png" alt="coding meme" width={640} height={363}/></Box>
+          }
         </Stack>
       </Container>
     </>

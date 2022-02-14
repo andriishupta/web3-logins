@@ -2,7 +2,9 @@
   "name": "web3-logins",
   "private": true,
   "scripts": {
-    "postinstall": "npm run generate-logins",
+    "predev": "npm run generate-logins",
+    "prebuild": "npm run generate-logins",
+    "prestart": "npm run generate-logins",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

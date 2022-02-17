@@ -15,14 +15,13 @@ import {
 
 import Heading from '../src/components/Heading';
 import LoginPicker from '../src/components/LoginPicker';
-
 const Code = dynamic(() => import('../src/components/Code'), { ssr: false });
+
+import Mock from '../src/components/logins/Mock';
 const Web3js = dynamic(() => import('../src/components/logins/Web3js'), { ssr: false });
 const Web3Modal = dynamic(() => import('../src/components/logins/Web3Modal'), { ssr: false });
 const ThirdWeb = dynamic(() => import('../src/components/logins/ThirdWeb'), { ssr: false });
-
-import Moralis from '../src/components/logins/Moralis';
-import Mock from '../src/components/logins/Mock';
+const Moralis = dynamic(() => import('../src/components/logins/Moralis'), { ssr: false });
 
 const LoginComponents = {
   [ LoginType.Mock ]: Mock,

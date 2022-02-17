@@ -1,3 +1,14 @@
+## Todo
+- ONLY test networks??
+- handle provider events
+- rejected event
+- handle missing metamask
+- update readme
+- add translations
+- add MD files for each type: how to install/run/what you need
+- add chakra alerts: "Copied"
+- loaders
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

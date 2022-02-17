@@ -2,7 +2,7 @@ const fs = require('fs');
 
 const availableLoginFileNames = [
   'Mock',
-  'Plain',
+  'Web3js',
   'Web3Modal',
   'ThirdWeb',
   'Moralis',

@@ -2,7 +2,6 @@ import { useState } from 'react';
 // REPLACE_IMPORTS
 import ConnectButton from '../ConnectButton';
 import { LoginType } from '../../core';
-const currentLoginType = LoginType.Mock;
 // REPLACE_IMPORTS
 
 const Mock = () => {
@@ -21,7 +20,7 @@ const Mock = () => {
   return (
     // REPLACE_BUTTON
     <ConnectButton
-      type={currentLoginType}
+      address="0x0"
       isConnected={isConnected}
       connect={connect}
       disconnect={disconnect}

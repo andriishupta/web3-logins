@@ -8,7 +8,7 @@ import { ThemeTypings } from '@chakra-ui/styled-system';
 
 export enum LoginType {
   Mock = 'Mock',
-  Plain = 'Plain',
+  Web3js = 'Web3js',
   Web3Modal = 'Web3Modal',
   ThirdWeb = 'ThirdWeb',
   Moralis = 'Moralis',
@@ -19,8 +19,8 @@ export const AvailableLoginTypesMap: Record<LoginType, { type: LoginType, color:
     type: LoginType.Mock,
     color: 'gray',
   },
-  [LoginType.Plain]: {
-    type: LoginType.Plain,
+  [LoginType.Web3js]: {
+    type: LoginType.Web3js,
     color: 'blackAlpha',
   },
   [LoginType.Web3Modal]: {
@@ -45,7 +45,7 @@ export type LoginState = {
 }
 
 export const defaultLoginStateValue: LoginState = {
-  loginType: undefined,
+  loginType: LoginType.Web3js,
   setLoginType: () => {},
 };
 

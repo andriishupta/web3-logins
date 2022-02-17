@@ -16,26 +16,34 @@ import {
 import Heading from '../src/components/Heading';
 import LoginPicker from '../src/components/LoginPicker';
 
-const DynamicCodeComponent = dynamic(
+const Code = dynamic(
   () => import('../src/components/Code'),
   { ssr: false }
 );
+const Web3js = dynamic(
+  () => import('../src/components/logins/Web3js'),
+  { ssr: false }
+);
+const Web3Modal = dynamic(
+  () => import('../src/components/logins/Web3Modal'),
+  { ssr: false }
+);
 
-import Plain from '../src/components/logins/Plain';
-import Web3Modal from '../src/components/logins/Web3Modal';
 import ThirdWeb from '../src/components/logins/ThirdWeb';
 import Moralis from '../src/components/logins/Moralis';
 import Mock from '../src/components/logins/Mock';
 
+const LoginComponents = {
+  [ LoginType.Mock ]: Mock,
+  [ LoginType.Web3js ]: Web3js,
+  [ LoginType.Web3Modal ]: Web3Modal,
+  [ LoginType.ThirdWeb ]: ThirdWeb,
+  [ LoginType.Moralis ]: Moralis,
+};
+
 const Home: NextPage = () => {
   const { loginType } = useLogin();
-  const LoginComponent = {
-    [ LoginType.Mock ]: Mock,
-    [ LoginType.Plain ]: Plain,
-    [ LoginType.Web3Modal ]: Web3Modal,
-    [ LoginType.ThirdWeb ]: ThirdWeb,
-    [ LoginType.Moralis ]: Moralis,
-  }[ loginType! ];
+  const LoginComponent = LoginComponents[ loginType! ];
 
   return (
     <>
@@ -59,7 +67,7 @@ const Home: NextPage = () => {
           {loginType
             ? <>
               <LoginComponent/>
-              <DynamicCodeComponent/>
+              <Code/>
               ...Description...
             </>
             : <Box py={{ base: 10, md: 10 }}><Image src="/placeholder.png" alt="coding meme" width={640} height={363}/></Box>

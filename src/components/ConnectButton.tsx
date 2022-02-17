@@ -1,20 +1,23 @@
 import { FC } from 'react';
 import {
   Button,
-  Stack
+  Stack,
+  Text
 } from '@chakra-ui/react';
 import {
-  LoginType
+  useLogin
 } from '../core';
 
 type ConnectButtonParams = {
-  type: LoginType,
+  address: string;
   isConnected: boolean,
   connect: Function,
   disconnect: Function
 };
 
-const ConnectButton: FC<ConnectButtonParams> = ({ type, isConnected, connect, disconnect }) => {
+const ConnectButton: FC<ConnectButtonParams> = ({ address, isConnected, connect, disconnect }) => {
+  const { loginType } = useLogin();
+
   const loginStateColoring = isConnected ? 'red' : 'green';
   return <>
     <Stack
@@ -32,8 +35,9 @@ const ConnectButton: FC<ConnectButtonParams> = ({ type, isConnected, connect, di
         _hover={{
           bg: `${loginStateColoring}.500`,
         }}>
-        {isConnected ? 'Disconnect' : `Connect with ${type} + logo`}
+        {isConnected ? 'Disconnect' : `Connect with ${loginType} + logo`}
       </Button>
+      <Text>{ address }</Text>
     </Stack>
   </>;
 };

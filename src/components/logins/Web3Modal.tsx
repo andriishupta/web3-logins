@@ -30,7 +30,6 @@ const _Web3Modal = () => {
   }, []);
 
   const connect = async () => {
-    console.log('connecting');
     const provider = await web3Modal.connect();
     const web3 = new Web3(provider);
     const [account] = await web3.eth.getAccounts();

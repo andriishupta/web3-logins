@@ -16,20 +16,11 @@ import {
 import Heading from '../src/components/Heading';
 import LoginPicker from '../src/components/LoginPicker';
 
-const Code = dynamic(
-  () => import('../src/components/Code'),
-  { ssr: false }
-);
-const Web3js = dynamic(
-  () => import('../src/components/logins/Web3js'),
-  { ssr: false }
-);
-const Web3Modal = dynamic(
-  () => import('../src/components/logins/Web3Modal'),
-  { ssr: false }
-);
+const Code = dynamic(() => import('../src/components/Code'), { ssr: false });
+const Web3js = dynamic(() => import('../src/components/logins/Web3js'), { ssr: false });
+const Web3Modal = dynamic(() => import('../src/components/logins/Web3Modal'), { ssr: false });
+const ThirdWeb = dynamic(() => import('../src/components/logins/ThirdWeb'), { ssr: false });
 
-import ThirdWeb from '../src/components/logins/ThirdWeb';
 import Moralis from '../src/components/logins/Moralis';
 import Mock from '../src/components/logins/Mock';
 

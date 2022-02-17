@@ -35,9 +35,9 @@ const ConnectButton: FC<ConnectButtonParams> = ({ address, isConnected, connect,
         _hover={{
           bg: `${loginStateColoring}.500`,
         }}>
-        {isConnected ? 'Disconnect' : `Connect with ${loginType} + logo`}
+        {isConnected ? 'Disconnect' : `Connect with ${loginType}`}
       </Button>
-      { isConnected && <Text>{ address }</Text> }
+      {isConnected && <Text>{address}</Text>}
     </Stack>
   </>;
 };

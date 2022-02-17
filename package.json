@@ -12,6 +12,8 @@
     "generate-logins": "node generate-logins.js"
   },
   "dependencies": {
+    "@3rdweb/hooks": "^1.9.2",
+    "@3rdweb/react": "^1.9.3",
     "@chakra-ui/react": "^1.8.3",
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",

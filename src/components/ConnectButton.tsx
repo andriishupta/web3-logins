@@ -37,7 +37,7 @@ const ConnectButton: FC<ConnectButtonParams> = ({ address, isConnected, connect,
         }}>
         {isConnected ? 'Disconnect' : `Connect with ${loginType} + logo`}
       </Button>
-      <Text>{ address }</Text>
+      { isConnected && <Text>{ address }</Text> }
     </Stack>
   </>;
 };

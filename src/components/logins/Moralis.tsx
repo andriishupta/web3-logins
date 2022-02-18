@@ -4,12 +4,12 @@ import {
 } from 'react-moralis';
 import ConnectButton from '../ConnectButton';
 
-const NEXT_PUBLIC_MORALIS_APP_ID = process.env.NEXT_PUBLIC_MORALIS_APP_ID!;
-const NEXT_PUBLIC_MORALIS_SERVER_URL = process.env.NEXT_PUBLIC_MORALIS_SERVER_URL!;
+const yourAppId = process.env.NEXT_PUBLIC_MORALIS_APP_ID!;
+const yourServerUrl = process.env.NEXT_PUBLIC_MORALIS_SERVER_URL!;
 
 const App = () => {
   return (
-    <MoralisProvider appId={NEXT_PUBLIC_MORALIS_APP_ID} serverUrl={NEXT_PUBLIC_MORALIS_SERVER_URL}>
+    <MoralisProvider appId={yourAppId} serverUrl={yourServerUrl}>
       <Moralis/>
     </MoralisProvider>
   );
@@ -17,7 +17,7 @@ const App = () => {
 
 const Moralis = () => {
   const { authenticate, isAuthenticated, user, logout } = useMoralis();
-  const address = user?.getUsername();
+  const address = user?.attributes.ethAddress;
 
   return (
     <>

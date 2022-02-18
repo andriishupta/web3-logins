@@ -8,7 +8,7 @@ import ConnectButton from '../ConnectButton';
 
 const Web3jsCacheKey = 'web3js_cache_key';
 
-const Web3js = () => {
+const App = () => {
   const [connectedAccount, setConnectedAccount] = useState('');
 
   useEffect(() => {
@@ -31,11 +31,11 @@ const Web3js = () => {
   };
 
   const isProviderCached = () => {
-    return localStorage.getItem(Web3jsCacheKey) == 'true';
+    return sessionStorage.getItem(Web3jsCacheKey) == 'true';
   };
 
   const toggleCachedProvider = (status: boolean) => {
-    localStorage.setItem(Web3jsCacheKey, JSON.stringify(status));
+    sessionStorage.setItem(Web3jsCacheKey, JSON.stringify(status));
   };
 
   return (
@@ -50,4 +50,4 @@ const Web3js = () => {
   );
 };
 
-export default Web3js;
+export default App;

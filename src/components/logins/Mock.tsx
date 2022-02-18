@@ -4,7 +4,7 @@ import ConnectButton from '../ConnectButton';
 import { LoginType } from '../../core';
 // REPLACE_IMPORTS
 
-const Mock = () => {
+const App = () => {
   const [isConnected, setIsConnected] = useState(false);
 
   const connect = () => {
@@ -29,4 +29,4 @@ const Mock = () => {
   );
 };
 
-export default Mock;
+export default App;

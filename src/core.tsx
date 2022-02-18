@@ -45,7 +45,7 @@ export type LoginState = {
 }
 
 export const defaultLoginStateValue: LoginState = {
-  loginType: LoginType.Web3js,
+  loginType: undefined,
   setLoginType: () => {},
 };
 

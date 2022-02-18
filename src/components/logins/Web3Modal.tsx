@@ -17,10 +17,10 @@ const web3Modal = new Web3Modal({
     authereum: {
       package: Authereum // required
     }
-  } // required
+  }
 });
 
-const _Web3Modal = () => {
+const App = () => {
   const [connectedAccount, setConnectedAccount] = useState('');
 
   useEffect(() => {
@@ -51,9 +51,14 @@ const _Web3Modal = () => {
 
   return (
     <>
-      <ConnectButton address={connectedAccount} isConnected={!!connectedAccount} connect={connect} disconnect={disconnect}/>
+      <ConnectButton
+        address={connectedAccount}
+        isConnected={!!connectedAccount}
+        connect={connect}
+        disconnect={disconnect}
+      />
     </>
   );
 };
 
-export default _Web3Modal;
+export default App;

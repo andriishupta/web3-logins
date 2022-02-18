@@ -17,13 +17,23 @@ import nightOwl from 'react-syntax-highlighter/dist/esm/styles/hljs/night-owl';
 
 import { useLogin } from '../core';
 
+const CopyLabel = 'Copy 📄';
+const CopiedLabel = 'Copied ✅'
+
 const Code: FC = () => {
   const { loginType } = useLogin();
   const [codeString, setCodeString] = useState('');
+  const [copyLabel, setCopyLabel] = useState(CopyLabel);
 
   useEffect(() => {
     fetch(`/${loginType}.login.json`).then((response) => response.json()).then(({ value }) => setCodeString(value));
   }, [loginType]);
+
+  const handleCopy = () => {
+    copy(codeString);
+    setCopyLabel(CopiedLabel)
+    setTimeout(() => setCopyLabel(CopyLabel), 1000);
+  }
 
   return <Box my={2} width={'100%'}>
     {codeString &&
@@ -32,9 +42,9 @@ const Code: FC = () => {
           position={'absolute'}
           rounded={0}
           right={0}
-          onClick={() => copy(codeString)}
+          onClick={handleCopy}
         >
-          Copy 📄`
+          {copyLabel}
         </Button>
         <SyntaxHighlighter
           language="typescript"
@@ -44,6 +54,8 @@ const Code: FC = () => {
         >
           {codeString}
         </SyntaxHighlighter>
+
+        Description: reactmarkdown
       </>
     }
   </Box>;

@@ -2,10 +2,11 @@ import {
   MoralisProvider,
   useMoralis
 } from 'react-moralis';
+// REPLACE_IMPORTS
 import ConnectButton from '../ConnectButton';
-
 const yourAppId = process.env.NEXT_PUBLIC_MORALIS_APP_ID!;
 const yourServerUrl = process.env.NEXT_PUBLIC_MORALIS_SERVER_URL!;
+// REPLACE_IMPORTS
 
 const App = () => {
   return (

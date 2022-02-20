@@ -14,24 +14,24 @@ export enum LoginType {
   Moralis = 'Moralis',
 }
 
-export const AvailableLoginTypesMap: Record<LoginType, { type: LoginType, color: ThemeTypings["colorSchemes"] }> = {
-  [LoginType.Mock]: {
+export const AvailableLoginTypesMap: Record<LoginType, { type: LoginType, color: ThemeTypings['colorSchemes'] }> = {
+  [ LoginType.Mock ]: {
     type: LoginType.Mock,
     color: 'gray',
   },
-  [LoginType.Web3js]: {
+  [ LoginType.Web3js ]: {
     type: LoginType.Web3js,
     color: 'blackAlpha',
   },
-  [LoginType.Web3Modal]: {
+  [ LoginType.Web3Modal ]: {
     type: LoginType.Web3Modal,
     color: 'teal',
   },
-  [LoginType.ThirdWeb]: {
+  [ LoginType.ThirdWeb ]: {
     type: LoginType.ThirdWeb,
     color: 'purple',
   },
-  [LoginType.Moralis]: {
+  [ LoginType.Moralis ]: {
     type: LoginType.Moralis,
     color: 'facebook',
   },

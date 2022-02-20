@@ -18,7 +18,7 @@ import nightOwl from 'react-syntax-highlighter/dist/esm/styles/hljs/night-owl';
 import { useLogin } from '../core';
 
 const CopyLabel = 'Copy 📄';
-const CopiedLabel = 'Copied ✅'
+const CopiedLabel = 'Copied ✅';
 
 const Code: FC = () => {
   const { loginType } = useLogin();
@@ -31,9 +31,9 @@ const Code: FC = () => {
 
   const handleCopy = () => {
     copy(codeString);
-    setCopyLabel(CopiedLabel)
+    setCopyLabel(CopiedLabel);
     setTimeout(() => setCopyLabel(CopyLabel), 1000);
-  }
+  };
 
   return <Box my={2} width={'100%'}>
     {codeString &&

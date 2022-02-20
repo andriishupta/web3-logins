@@ -3,11 +3,10 @@ import {
   ThirdwebProvider
 } from '@3rdweb/react';
 import { useWeb3 } from '@3rdweb/hooks';
-
 import { Box } from '@chakra-ui/react';
-
+// REPLACE_IMPORTS
 import ConnectButton from '../ConnectButton';
-
+// REPLACE_IMPORTS
 const supportedChainIds = [1];
 const connectors = {
   injected: {}

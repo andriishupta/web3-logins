@@ -7,9 +7,9 @@ import Web3 from 'web3';
 import Web3Modal from 'web3modal';
 
 import Authereum from 'authereum';
-
+// REPLACE_IMPORTS
 import ConnectButton from '../ConnectButton';
-
+// REPLACE_IMPORTS
 const web3Modal = new Web3Modal({
   network: 'mainnet', // optional
   cacheProvider: true, // optional

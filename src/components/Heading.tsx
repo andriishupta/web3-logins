@@ -28,7 +28,7 @@ const Heading = () => {
         : <>
           Select what kind of login you want to use and check what it takes to implement it 🤓
           <br/>
-          The code you will see is actual implementation taken from the codebase 🤯
+          The code you will see is actual implementation taken from the codebase 👨‍💻
         </>
       }
     </Text>
@@ -39,7 +39,7 @@ const Heading = () => {
     >
       {loginType && <>
         ✨&nbsp;
-        <Text as={'span'} color={`${color}.400`}>
+        <Text as={'span'} color={`${color}.500`}>
           {loginType}
         </Text>
         &nbsp;✨

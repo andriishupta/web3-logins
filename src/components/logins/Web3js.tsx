@@ -3,9 +3,9 @@ import {
   useState
 } from 'react';
 import Web3 from 'web3';
-
+// REPLACE_IMPORTS
 import ConnectButton from '../ConnectButton';
-
+// REPLACE_IMPORTS
 const Web3jsCacheKey = 'web3js_cache_key';
 
 const App = () => {
@@ -31,7 +31,7 @@ const App = () => {
   };
 
   const isProviderCached = () => {
-    return sessionStorage.getItem(Web3jsCacheKey) == 'true';
+    return sessionStorage.getItem(Web3jsCacheKey) === 'true';
   };
 
   const toggleCachedProvider = (status: boolean) => {

@@ -4,9 +4,7 @@ import {
   Stack,
   Text
 } from '@chakra-ui/react';
-import {
-  useLogin
-} from '../core';
+import { useLogin } from '../core';
 
 type ConnectButtonParams = {
   address: string;

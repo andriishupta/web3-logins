@@ -18,11 +18,11 @@ const Footer = () => {
           <Flex alignItems={'center'}>
             <Text display={'flex'} color={'gray.500'}>
               Created with
-              <Link href={'https://nextjs.org/'} marginX={1}>
+              <Link href={'https://nextjs.org/'} target={'_blank'} rel="noreferrer" marginX={1}>
                 <Text color={'gray.700'}>Next.js</Text>
               </Link>
               &
-              <Link href={'https://chakra-ui.com/'} marginX={1}>
+              <Link href={'https://chakra-ui.com/'} target={'_blank'} rel="noreferrer" marginX={1}>
                 <Text color={'gray.700'}>Chakra-UI</Text>
               </Link>
             </Text>
@@ -31,7 +31,7 @@ const Footer = () => {
           <Flex alignItems={'center'}>
             <Text display={'flex'} color={'gray.500'}>
               with 🖤 by&nbsp;
-              <Link href={'https://twitter.com/andriishupta'}>
+              <Link href={'https://twitter.com/andriishupta'} target={'_blank'} rel="noreferrer">
                 <Text display={'inline'} color={'#00ACEE'}>@andriishupta</Text>
               </Link>
             </Text>

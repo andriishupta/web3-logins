@@ -21,7 +21,7 @@ const web3Modal = new Web3Modal({
 });
 
 const App = () => {
-  const [connectedAccount, setConnectedAccount] = useState('');
+  const [address, setAddress] = useState('');
 
   useEffect(() => {
     if (web3Modal?.cachedProvider) {
@@ -33,7 +33,7 @@ const App = () => {
     const provider = await web3Modal.connect();
     const web3 = new Web3(provider);
     const [account] = await web3.eth.getAccounts();
-    setConnectedAccount(account);
+    setAddress(account);
 
     // todo: handle events ?
     // provider.on('accountsChanged', async () => {
@@ -46,18 +46,18 @@ const App = () => {
 
   const disconnect = async () => {
     await web3Modal.clearCachedProvider();
-    setConnectedAccount('');
+    setAddress('');
   };
 
   return (
-    <>
-      <ConnectButton
-        address={connectedAccount}
-        isConnected={!!connectedAccount}
-        connect={connect}
-        disconnect={disconnect}
-      />
-    </>
+    // REPLACE_BUTTON
+    <ConnectButton
+      address={address}
+      isConnected={!!address}
+      connect={connect}
+      disconnect={disconnect}
+    />
+    // REPLACE_BUTTON
   );
 };
 

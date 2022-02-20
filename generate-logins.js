@@ -15,6 +15,7 @@ const DefaultButtonJSX = `
     >
       { isConnected ? 'Disconnect' : 'Connect' }
     </button>
+    { address }
 `
 
 for (let fileName of availableLoginFileNames) {

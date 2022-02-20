@@ -9,7 +9,7 @@ import ConnectButton from '../ConnectButton';
 const Web3jsCacheKey = 'web3js_cache_key';
 
 const App = () => {
-  const [connectedAccount, setConnectedAccount] = useState('');
+  const [address, setAddress] = useState('');
 
   useEffect(() => {
     if (isProviderCached()) {
@@ -21,12 +21,12 @@ const App = () => {
     await window.ethereum.request({ method: 'eth_requestAccounts' });
     const web3 = new Web3(window.ethereum);
     const [account] = await web3.eth.getAccounts();
-    setConnectedAccount(account);
+    setAddress(account);
     toggleCachedProvider(true);
   };
 
   const disconnect = () => {
-    setConnectedAccount('');
+    setAddress('');
     toggleCachedProvider(false);
   };
 
@@ -39,14 +39,14 @@ const App = () => {
   };
 
   return (
-    <>
-      <ConnectButton
-        address={connectedAccount}
-        isConnected={!!connectedAccount}
-        connect={connect}
-        disconnect={disconnect}
-      />
-    </>
+    // REPLACE_BUTTON
+    <ConnectButton
+      address={address}
+      isConnected={!!address}
+      connect={connect}
+      disconnect={disconnect}
+    />
+    // REPLACE_BUTTON
   );
 };
 

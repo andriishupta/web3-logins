@@ -21,14 +21,14 @@ const Moralis = () => {
   const address = user?.attributes.ethAddress;
 
   return (
-    <>
-      <ConnectButton
-        address={address!}
-        isConnected={isAuthenticated}
-        connect={authenticate}
-        disconnect={logout}
-      />
-    </>
+    // REPLACE_BUTTON
+    <ConnectButton
+      address={address!}
+      isConnected={isAuthenticated}
+      connect={authenticate}
+      disconnect={logout}
+    />
+    // REPLACE_BUTTON
   );
 };
 

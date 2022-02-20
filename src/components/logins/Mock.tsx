@@ -5,6 +5,7 @@ import ConnectButton from '../ConnectButton';
 
 const App = () => {
   const [isConnected, setIsConnected] = useState(false);
+  const address = '0x0';
 
   const connect = () => {
     alert('hooray! this is mocked login and you are "connected"');
@@ -19,7 +20,7 @@ const App = () => {
   return (
     // REPLACE_BUTTON
     <ConnectButton
-      address="0x0"
+      address={address}
       isConnected={isConnected}
       connect={connect}
       disconnect={disconnect}

@@ -34,14 +34,14 @@ const CustomConnect = () => {
   const { address, connectWallet, disconnectWallet } = useWeb3();
 
   return (
-    <>
-      <ConnectButton
-        address={address!}
-        isConnected={!!address}
-        connect={() => connectWallet('injected')}
-        disconnect={disconnectWallet}
-      />
-    </>
+    // REPLACE_BUTTON
+    <ConnectButton
+      address={address!}
+      isConnected={!!address}
+      connect={() => connectWallet('injected')}
+      disconnect={disconnectWallet}
+    />
+    // REPLACE_BUTTON
   );
 };
 

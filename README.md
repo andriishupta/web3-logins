@@ -1,4 +1,5 @@
 ## Todo
+- dark mode
 - getStatic props - replace load of .json
 - ONLY test networks??
 - handle provider events

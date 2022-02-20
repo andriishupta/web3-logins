@@ -51,28 +51,29 @@ const Home: NextPage = () => {
         <title>Web3 Logins Showcase {loginType ? `| ${loginType}` : ''} </title>
       </Head>
       <Header/>
-      <Container position={'relative'} maxW={'3xl'} display={'flex'} flexDirection={'column'}>
+      <Container maxW={'3xl'} centerContent>
         <Stack
-          as={Box}
           textAlign={'center'}
-          spacing={{ base: 8, md: 10 }}
-          py={{ base: 20, md: 20 }}
+          spacing={{ base: 5, md: 5 }}
+          paddingTop={{ base: 5, md: 5 }}
+          paddingBottom={0}
           position={'relative'}
         >
           <LoginPicker/>
           <Heading/>
-          {loginType
-            ? <>
+          {loginType &&
+            <>
               <LoginComponent/>
               <Code/>
             </>
-            : <Box py={{ base: 10, md: 10 }}><Image src="/placeholder.png" alt="coding meme" width={640} height={363}/></Box>
           }
         </Stack>
+        {!loginType &&
+            <Image src="/placeholder.png" alt="coding meme" width={640} height={363}/>
+        }
       </Container>
       <Footer/>
     </>
-
   );
 };
 

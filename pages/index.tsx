@@ -68,10 +68,12 @@ const Home: NextPage = () => {
             </>
           }
         </Stack>
-        {!loginType &&
-            <Image src="/placeholder.png" alt="coding meme" width={640} height={363}/>
-        }
       </Container>
+      {!loginType &&
+        <Box position={'absolute'} bottom={'42px'} right={0}>
+          <Image src="/placeholder.png" alt="coding meme" width={640} height={363}/>
+        </Box>
+      }
       <Footer/>
     </>
   );
